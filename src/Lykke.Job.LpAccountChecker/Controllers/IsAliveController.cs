@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Net;
-using Lykke.Job.LykkeJob.Core.Services;
-using Lykke.Job.LykkeJob.Models;
+using Lykke.Job.LpAccountChecker.Core.Services;
+using Lykke.Job.LpAccountChecker.Models;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lykke.Job.LykkeJob.Controllers
+namespace Lykke.Job.LpAccountChecker.Controllers
 {
     // NOTE: See https://lykkex.atlassian.net/wiki/spaces/LKEWALLET/pages/35755585/Add+your+app+to+Monitoring
     [Route("api/[controller]")]

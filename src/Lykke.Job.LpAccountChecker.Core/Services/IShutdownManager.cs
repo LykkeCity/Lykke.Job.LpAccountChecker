@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Common;
 
-namespace Lykke.Job.LykkeJob.Core.Services
+namespace Lykke.Job.LpAccountChecker.Core.Services
 {
     public interface IShutdownManager
     {

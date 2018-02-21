@@ -1,4 +1,4 @@
-﻿namespace Lykke.Job.LykkeJob.Models
+﻿namespace Lykke.Job.LpAccountChecker.Models
 {
     public class ErrorResponse
     {

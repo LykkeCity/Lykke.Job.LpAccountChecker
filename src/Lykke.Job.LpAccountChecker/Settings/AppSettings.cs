@@ -1,11 +1,11 @@
-﻿using Lykke.Job.LykkeJob.Settings.JobSettings;
-using Lykke.Job.LykkeJob.Settings.SlackNotifications;
+﻿using Lykke.Job.LpAccountChecker.Settings.JobSettings;
+using Lykke.Job.LpAccountChecker.Settings.SlackNotifications;
 
-namespace Lykke.Job.LykkeJob.Settings
+namespace Lykke.Job.LpAccountChecker.Settings
 {
     public class AppSettings
     {
-        public LykkeJobSettings LykkeJobJob { get; set; }
+        public LpAccountCheckerSettings LpAccountChecker { get; set; }
         public SlackNotificationsSettings SlackNotifications { get; set; }
     }
 }

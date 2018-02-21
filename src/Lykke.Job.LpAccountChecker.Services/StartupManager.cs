@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Common.Log;
-using Lykke.Job.LykkeJob.Core.Services;
+using Lykke.Job.LpAccountChecker.Core.Services;
 
-namespace Lykke.Job.LykkeJob.Services
+namespace Lykke.Job.LpAccountChecker.Services
 {
     // NOTE: Sometimes, startup process which is expressed explicitly is not just better, 
     // but the only way. If this is your case, use this class to manage startup.

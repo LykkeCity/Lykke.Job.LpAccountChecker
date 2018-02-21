@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Lykke.Job.LykkeJob.Core.Domain.Health;
+using Lykke.Job.LpAccountChecker.Core.Domain.Health;
 
-namespace Lykke.Job.LykkeJob.Core.Services
+namespace Lykke.Job.LpAccountChecker.Core.Services
 {
     // NOTE: See https://lykkex.atlassian.net/wiki/spaces/LKEWALLET/pages/35755585/Add+your+app+to+Monitoring
     public interface IHealthService

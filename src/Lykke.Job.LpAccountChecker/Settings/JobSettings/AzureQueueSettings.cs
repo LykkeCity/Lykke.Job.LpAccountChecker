@@ -1,4 +1,4 @@
-﻿namespace Lykke.Job.LykkeJob.Settings.JobSettings
+﻿namespace Lykke.Job.LpAccountChecker.Settings.JobSettings
 {
     public class AzureQueueSettings
     {

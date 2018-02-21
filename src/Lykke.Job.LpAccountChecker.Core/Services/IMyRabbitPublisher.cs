@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
 using Common;
-using Lykke.Job.LykkeJob.Contract;
+using Lykke.Job.LpAccountChecker.Contract;
 
-namespace Lykke.Job.LykkeJob.Core.Services
+namespace Lykke.Job.LpAccountChecker.Core.Services
 {
     public interface IMyRabbitPublisher : IStartable, IStopable
     {

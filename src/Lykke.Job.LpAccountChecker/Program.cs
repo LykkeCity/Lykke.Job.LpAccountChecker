@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.PlatformAbstractions;
 
-namespace Lykke.Job.LykkeJob
+namespace Lykke.Job.LpAccountChecker
 {
     internal sealed class Program
     {

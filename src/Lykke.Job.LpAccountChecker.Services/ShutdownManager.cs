@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Common;
 using Common.Log;
-using Lykke.Job.LykkeJob.Core.Services;
+using Lykke.Job.LpAccountChecker.Core.Services;
 
-namespace Lykke.Job.LykkeJob.Services
+namespace Lykke.Job.LpAccountChecker.Services
 {
     // NOTE: Sometimes, shutdown process should be expressed explicitly. 
     // If this is your case, use this class to manage shutdown.

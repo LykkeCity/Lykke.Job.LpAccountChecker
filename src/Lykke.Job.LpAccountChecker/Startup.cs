@@ -6,23 +6,24 @@ using AzureStorage.Tables;
 using Common.Log;
 using Lykke.Common.ApiLibrary.Middleware;
 using Lykke.Common.ApiLibrary.Swagger;
-using Lykke.Job.LykkeJob.Core.Services;
-using Lykke.Job.LykkeJob.Settings;
-using Lykke.Job.LykkeJob.Models;
-using Lykke.Job.LykkeJob.Modules;
+using Lykke.Job.LpAccountChecker.Core.Services;
+using Lykke.Job.LpAccountChecker.Models;
+using Lykke.Job.LpAccountChecker.Modules;
+using Lykke.Job.LpAccountChecker.PeriodicalHandlers;
+using Lykke.Job.LpAccountChecker.Settings;
 using Lykke.Logs;
 using Lykke.SettingsReader;
 using Lykke.SlackNotification.AzureQueue;
-#if azurequeuesub
-using Lykke.JobTriggers.Triggers;
-using System.Threading.Tasks;
-#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+#if azurequeuesub
+using Lykke.JobTriggers.Triggers;
+using System.Threading.Tasks;
+#endif
 
-namespace Lykke.Job.LykkeJob
+namespace Lykke.Job.LpAccountChecker
 {
     public class Startup
     {
@@ -67,7 +68,7 @@ namespace Lykke.Job.LykkeJob
 
                 Log = CreateLogWithSlack(services, appSettings);
 
-                builder.RegisterModule(new JobModule(appSettings.CurrentValue.LykkeJobJob, appSettings.Nested(x => x.LykkeJobJob.Db), Log));
+                builder.RegisterModule(new JobModule(appSettings.CurrentValue.LpAccountChecker, appSettings.Nested(x => x.LpAccountChecker.Db), Log));
 
                 builder.Populate(services);
 
@@ -124,12 +125,10 @@ namespace Lykke.Job.LykkeJob
                 // NOTE: Job not yet recieve and process IsAlive requests here
 
                 await ApplicationContainer.Resolve<IStartupManager>().StartAsync();
-#if azurequeuesub
 
-                _triggerHost = new TriggerHost(new AutofacServiceProvider(ApplicationContainer));
-
-                _triggerHostTask = _triggerHost.Start();
-#endif
+                //start periodic handlers
+                ApplicationContainer.Resolve<ExchangePollingHandler>().InitializeAndStart();
+                
                 await Log.WriteMonitorAsync("", Program.EnvInfo, "Started");
             }
             catch (Exception ex)
@@ -197,7 +196,7 @@ namespace Lykke.Job.LykkeJob
 
             aggregateLogger.AddLog(consoleLogger);
 
-            var dbLogConnectionStringManager = settings.Nested(x => x.LykkeJobJob.Db.LogsConnString);
+            var dbLogConnectionStringManager = settings.Nested(x => x.LpAccountChecker.Db.LogsConnString);
             var dbLogConnectionString = dbLogConnectionStringManager.CurrentValue;
 
             if (string.IsNullOrEmpty(dbLogConnectionString))

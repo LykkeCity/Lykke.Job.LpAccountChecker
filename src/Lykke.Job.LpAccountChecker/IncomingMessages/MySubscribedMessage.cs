@@ -1,4 +1,4 @@
-﻿namespace Lykke.Job.LykkeJob.IncomingMessages
+﻿namespace Lykke.Job.LpAccountChecker.IncomingMessages
 {
     // NOTE: This is incoming message example
     public class MySubscribedMessage
